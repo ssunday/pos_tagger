@@ -10,8 +10,14 @@ Specified Ruby version is 2.4.1.
 
 ## Usage
 
+Proper Nouns/Nouns/Verbs/Adjectives:
 ```
 bundle exec rake pos_tagger:tag_text['spec/fixtures/test.txt','count']
+```
+
+Just Proper Nouns:
+```
+bundle exec rake pos_tagger:proper_nouns['spec/fixtures/test.txt','count']
 ```
 
 - 1st argument is the path to the file to tag.

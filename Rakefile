@@ -14,4 +14,16 @@ namespace :pos_tagger do
       puts 'File does not exist. Aborting!'
     end
   end
+
+  task :proper_nouns, [:path, :order_by] do |t, args|
+    path = args[:path]
+    order_by = args[:order_by]
+
+    if File.exist?(path)
+      data = PosTagger.new(path, order_by: order_by).text_summary
+      puts JSON.pretty_generate(data[:proper_nouns])
+    else
+      puts 'File does not exist. Aborting!'
+    end
+  end
 end
