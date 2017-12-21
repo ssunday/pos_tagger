@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <h2>Proper nouns</h2>
+    <%= column_chart @result[:proper_nouns] %>
+  </div>
+  <div class="row">
+    <h2>Nouns</h2>
+    <%= column_chart @result[:nouns] %>
+  </div>
+  <div class="row">
+    <h2>Verbs</h2>
+    <%= column_chart @result[:verbs] %>
+  </div>
+  <div class="row">
+    <h2>Adjectives</h2>
+    <%= column_chart @result[:adjectives] %>
+  </div>
+</div>

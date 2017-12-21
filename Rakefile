@@ -1,29 +1,6 @@
-import 'lib/pos_tagger.rb'
-require 'json'
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-namespace :pos_tagger do
-  desc 'Given a file path, returns tag information for text'
-  task :tag_text, [:path, :order_by] do |t, args|
-    path = args[:path]
-    order_by = args[:order_by]
+require_relative 'config/application'
 
-    if File.exist?(path)
-      data = PosTagger.new(path, order_by: order_by).text_summary
-      puts JSON.pretty_generate(data)
-    else
-      puts 'File does not exist. Aborting!'
-    end
-  end
-
-  task :proper_nouns, [:path, :order_by] do |t, args|
-    path = args[:path]
-    order_by = args[:order_by]
-
-    if File.exist?(path)
-      data = PosTagger.new(path, order_by: order_by).text_summary
-      puts JSON.pretty_generate(data[:proper_nouns])
-    else
-      puts 'File does not exist. Aborting!'
-    end
-  end
-end
+Rails.application.load_tasks
