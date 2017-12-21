@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Select Text to Analyze</h2>
+
+  <%= form_tag({action: :parse}, multipart: true) do %>
+    <%= file_field_tag 'file' %>
+
+    <%= submit_tag "Analyze!"  %>
+  <% end %>
+</div>
