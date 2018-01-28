@@ -15,29 +15,29 @@ RSpec.describe PosTextTagger do
 
     it 'returns all proper nouns in the text' do
       expect(results[:proper_nouns]).to eq(
-                                          'Cyclone' => 2,
-                                          "Fla'neiel" => 1,
-                                          'Flana' => 1,
-                                          'King' => 5,
-                                          'Farrco' => 1,
-                                          'Spellbinder' => 1
-                                        )
+        'Cyclone' => 2,
+        "Fla'neiel" => 1,
+        'Flana' => 1,
+        'King' => 5,
+        'Farrco' => 1,
+        'Spellbinder' => 1
+      )
     end
 
     it 'returns all nouns in the text' do
       expect(results[:nouns]).to eq(
-                                   'Cyclone' => 2, 'Farrco' => 1, 'Spellbinder' => 1,
-                                   'King' => 5, 'lead' => 1, 'name' => 2, 'speech' => 1, 'times' => 2,
-                                   "magic" => 1, 'pondered' => 1,
-                                 )
+        'Cyclone' => 2, 'Farrco' => 1, 'Spellbinder' => 1,
+        'King' => 5, 'lead' => 1, 'name' => 2, 'speech' => 1, 'times' => 2,
+        'magic' => 1, 'pondered' => 1
+      )
     end
 
     it 'returns all verbs in the text' do
       expect(results[:verbs]).to eq(
-                                   'care' => 1, 'did' => 1,
-                                   'know' => 1, 'mulling' => 1, 'said' => 2, 'tag' => 1, 'wanted' => 1, 'was' => 5,
-                                   'performing' => 1
-                                 )
+        'care' => 1, 'did' => 1,
+        'know' => 1, 'mulling' => 1, 'said' => 2, 'tag' => 1, 'wanted' => 1, 'was' => 5,
+        'performing' => 1
+      )
     end
 
     it 'returns all adjectives in the text' do
@@ -50,7 +50,7 @@ RSpec.describe PosTextTagger do
 
     it 'orders by count with option' do
       expect(results[:proper_nouns].keys).to eq(['King', 'Cyclone', "Fla'neiel", 'Flana', 'Farrco', 'Spellbinder'])
-      expect(results[:verbs].keys).to eq(["was", "said", "care", "wanted", "did", "mulling", "tag", "performing", "know"])
+      expect(results[:verbs].keys).to eq(%w[was said care wanted did mulling tag performing know])
     end
   end
 
@@ -60,10 +60,10 @@ RSpec.describe PosTextTagger do
 
       it 'takes all words' do
         expect(results[:nouns]).to eq(
-                                   'Cyclone' => 2, "Fla'neiel" => 1, 'Flana' => 1, 'Farrco' => 1, 'Spellbinder' => 1,
-                                   'King' => 5, 'lead' => 1, 'name' => 2, 'speech' => 1, 'times' => 2, 'way' => 1,
-                                   "magic" => 1, 'pondered' => 1,
-                                 )
+          'Cyclone' => 2, "Fla'neiel" => 1, 'Flana' => 1, 'Farrco' => 1, 'Spellbinder' => 1,
+          'King' => 5, 'lead' => 1, 'name' => 2, 'speech' => 1, 'times' => 2, 'way' => 1,
+          'magic' => 1, 'pondered' => 1
+        )
       end
     end
 
@@ -71,10 +71,9 @@ RSpec.describe PosTextTagger do
       let(:pos_tagger) { described_class.new(file, limit: 2) }
 
       it 'only pulls top N words from summary' do
-        expect(results[:proper_nouns].keys).to eq(%w(King Cyclone))
+        expect(results[:proper_nouns].keys).to eq(%w[King Cyclone])
         expect(results[:verbs].keys).to eq(%w[was said])
       end
-
     end
 
     context 'if word count is less than limit' do

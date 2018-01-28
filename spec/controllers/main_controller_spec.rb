@@ -15,7 +15,7 @@ RSpec.describe MainController, type: :controller do
     it 'parses text and renders results template' do
       file = double(tempfile: 'test.txt')
 
-      allow(controller).to receive(:params).and_return({file: file})
+      allow(controller).to receive(:params).and_return(file: file)
 
       expect_any_instance_of(PosTextTagger).to receive(:text_summary).and_return({})
 
