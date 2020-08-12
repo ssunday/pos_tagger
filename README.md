@@ -4,19 +4,14 @@ Utilizes [`engtagger`](https://github.com/yohasebe/engtagger) to tag parts of sp
 
 It can either return a JSON object via a Rake Task or display [graphs](https://www.chartkick.com) on the results.
 
-## Install/Setup
+## Requirements
 
-Specified Ruby version is 2.4.1.
+- Ruby 2.6.5
 
-`bundle install`
+## Setup
 
-## Usage
-
-Start server:
-
-```
-bundle exec rails s
-```
+- `bundle install`
+- `bundle exec rails s`
 
 Navigate to [localhost:3000](http://localhost:3000)
 
@@ -27,13 +22,15 @@ Attach file, hit the submit button, and it'll show bar graphs of the parts of sp
 ### Rake Task
 
 Proper Nouns/Nouns/Verbs/Adjectives:
+
 ```
-bundle exec rake pos_tagger:tag_text['spec/fixtures/test.txt','count']
+bundle exec rake "pos_tagger:tag_text[spec/fixtures/test.txt,count]"
 ```
 
 Just Proper Nouns:
+
 ```
-bundle exec rake pos_tagger:proper_nouns['spec/fixtures/test.txt','count',5]
+bundle exec rake "pos_tagger:proper_nouns[spec/fixtures/test.txt,count]"
 ```
 
 - 1st argument is the path to the file to tag.
