@@ -1,21 +1,30 @@
+require:
+  - rubocop-rails
+
 AllCops:
+  TargetRubyVersion: 2.6.0
   Exclude:
     - bin/*
+
+Rails:
+  Enabled: true
+
+Rails/RakeEnvironment:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/MutableConstant:
-  Enabled: false
-
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Metrics/MethodLength:
   Max: 35
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - lib/tasks/*
 
 Style/Documentation:
   Enabled: false
